@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddJoinToSpecialitesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+
+    {
+        Schema::table('classes', function (Blueprint $table) {
+            $table->unsignedBigInteger('specialite_id')->nullable();
+            $table->foreign('specialite_id')->references('id')->on('spectialites')->onDelete('cascade');
+        });
+    }
+
+
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('classes', function (Blueprint $table) {
+            //
+        });
+    }
+}
